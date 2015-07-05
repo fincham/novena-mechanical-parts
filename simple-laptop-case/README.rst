@@ -10,3 +10,4 @@ Notes
 - Senoko sits 1.2mm lower than novena
 - SD card cutout position is currently just a guess and needs to be fixed
 - kerf is tunable - use the variable "k" to offset the laser path from the desired edge
+- should I shift the HD from supplied brackets to screwing directly to lower case?
