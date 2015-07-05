@@ -1,0 +1,81 @@
+%!PS
+
+% setup
+/mm { 360 mul 127 div } def
+0 setlinewidth
+/k 0 mm def % kerf
+<< /PageSize [ 600 mm 300 mm ] >> setpagedevice
+
+% page boundary
+1 0 1 setrgbcolor
+5 mm 5 mm moveto
+595 mm 5 mm lineto
+595 mm 295 mm lineto
+5 mm 295 mm lineto
+closepath
+stroke
+
+% cut base outline
+1 0 0 setrgbcolor
+/sdcutout {
+  /h exch def /w exch def /y exch def /x exch def /r exch def
+  x r sub y r sub r k add 0 90 arc
+  x w sub r add y r add r k sub 270 180 arcn
+  x w sub r add y h add r sub r k sub 180 90 arcn
+  x r sub y h add r add r k add 270 0 arc
+} def % r x y w h sdcutout -
+332.4 mm k add 225.7 mm moveto
+329.4 mm 225.7 mm 3.0 mm k add 0 90 arc % top right
+8.0 mm 225.7 mm 3.0 mm k add 90 180 arc % top left
+23.7 mm 23.7 mm 18.7 mm k add 180 270 arc % bottom left
+331.4 mm 6.0 mm 1.0 mm k add 270 0 arc % bottom right
+4 mm 332.4 mm 65 mm 8 mm 26 mm sdcutout
+closepath
+stroke
+
+% novena & senoko
+gsave % different coordinates, so we'll be changing the transform matrix
+270 rotate
+-170 mm 195 mm translate
+% etch outlines
+0 1 0 setrgbcolor
+-41.459858647 mm 9.55484991543 mm moveto
+-41.459858647 mm 130.554849215 mm lineto
+-0.459859421335 mm 130.554849215 mm lineto
+-0.459859421335 mm 9.55484991543 mm lineto
+closepath
+stroke
+0 mm 130.58000162 mm moveto
+150 mm 130.58000162 mm lineto
+150 mm 9.57999978 mm lineto
+0 mm 9.57999978 mm lineto
+closepath
+stroke
+/drillhole {
+  k sub 0 360 arc stroke
+} def % x y r drillhole -
+% cut drillholes
+1 0 0 setrgbcolor
+-38.4598596206 mm 127.554850137 mm 1.44999964 mm drillhole
+-3.45985850064 mm 127.554850152 mm 1.44999964 mm drillhole
+-38.4598595856 mm 49.554848657 mm 1.44999964 mm drillhole
+-3.45985847461 mm 69.554849313 mm 1.44999964 mm drillhole
+-19.4598594755 mm 27.054850485 mm 1.44999964 mm drillhole
+3 mm 127.580000000 mm 1.44999964 mm drillhole
+3 mm 109.580000440 mm 1.44999964 mm drillhole
+18.00000048 mm 106.579998820 mm 1.44999964 mm drillhole
+147.00000156 mm 127.580000000 mm 1.44999964 mm drillhole
+3 mm 73.579998780 mm 1.44999964 mm drillhole
+77.21900066 mm 45.198998900 mm 1.59999934 mm drillhole
+3 mm 12.579998860 mm 1.44999964 mm drillhole
+103.38100066 mm 71.360998900 mm 1.59999934 mm drillhole
+147.15000888 mm 88.335003560 mm 1.59999934 mm drillhole
+119.99999968 mm 56.579999760 mm 1.44999964 mm drillhole
+147.15000888 mm 63.335002760 mm 1.59999934 mm drillhole
+147.00000156 mm 56.579999760 mm 1.44999964 mm drillhole
+147.00000156 mm 12.579998860 mm 1.44999964 mm drillhole
+grestore % restore the original transform matrix
+
+% and we're done
+showpage
+quit
